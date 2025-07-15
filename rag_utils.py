@@ -77,3 +77,13 @@ def perform_rag(query):
     response_body = json.loads(response["body"].read())
     output_text = response_body["results"][0]["outputText"]
     return output_text
+
+# Function to perform RAG
+def delete_vector_embeddings():
+    try:
+        index.delete(delete_all=True)
+        print("All vector embeddings deleted successfully.")
+        return "All vector embeddings deleted successfully."
+    except Exception as e:
+        logging.error(f"Error deleting vector embeddings: {e}")
+        return f"Error deleting vector embeddings: {e}"

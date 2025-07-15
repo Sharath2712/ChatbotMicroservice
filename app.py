@@ -30,6 +30,11 @@ def training():
         rag_utils.get_embedding(rag_utils.text)
         rag_utils.upsert_embeddings()
         return "Training has been done!", 200
+    
+@app.route("/untrain", methods=["DELETE"])
+def untrain():
+        response = rag_utils.delete_vector_embeddings()
+        return response, 200
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
